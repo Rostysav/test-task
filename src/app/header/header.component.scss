@@ -1,0 +1,22 @@
+.container {
+  border-bottom: 2px solid #ccc;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    padding: 15px;
+    color: #000;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:hover {
+      color: blue;
+    }
+  }
+}

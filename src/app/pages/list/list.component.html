@@ -1,0 +1,35 @@
+<section>
+  <div class="container">
+    <mat-card>
+      <form>
+        <div class="form-group">
+          <h1>Skill list</h1>
+          <div class="form-wrapper">
+            <mat-form-field appearance="fill">
+              <mat-label>Add skill</mat-label>
+              <input
+                [(ngModel)]="skillItem"
+                #inputElement
+                matInput
+                ngModel
+                type="text"
+                placeholder="Add Todo"
+                name="todo"
+              >
+            </mat-form-field>
+            <button mat-button color="primary" (click)="addSkill(skillItem)">Add</button>
+          </div>
+        </div>
+        <div class="data">
+          <ul class="list-instyled">
+            <li *ngFor="let skills of skillsList">
+              {{ skills }}
+              <i (click)="editItem(skills)" class="material-icons">edit</i>
+              <i (click)="deleteItem(skills)" class="material-icons">delete</i>
+            </li>
+          </ul>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</section>

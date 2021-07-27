@@ -1,0 +1,69 @@
+<section>
+  <div class="container">
+    <h1>
+      Login form
+    </h1>
+
+    <mat-card>
+
+      <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+
+        <mat-form-field
+          appearance="fill"
+          class="form-control"
+          [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}"
+        >
+          <mat-label>Email</mat-label>
+          <input matInput id="email" type="email" formControlName="email">
+          <div
+            *ngIf="form.get('email').touched && form.get('email').invalid"
+            class="validation"
+          >
+            <small *ngIf="form.get('email').errors.required">
+              Enter email
+            </small>
+            <small *ngIf="form.get('email').errors.email">
+              The field should be an email type
+            </small>
+          </div>
+        </mat-form-field>
+
+        <mat-form-field
+          appearance="fill"
+          class="form-control"
+          [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}"
+        >
+          <mat-label>Password</mat-label>
+          <input matInput id="password" type="password" formControlName="password" [type]="hide ? 'password' : 'text'">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <div
+            class="validation"
+            *ngIf="form.get('password').touched && form.get('password').invalid"
+          >
+            <small *ngIf="form.get('password').errors.required">
+              Enter password
+            </small>
+            <small *ngIf="form.get('password').errors.minlength">
+              Password should be
+              {{form.get('password').errors.minlength.requiredLength}}
+              characters. Now he
+              {{form.get('password').errors.minlength.actualLength}}
+              characters.
+            </small>
+          </div>
+        </mat-form-field>
+
+        <button
+          mat-button
+          color="primary"
+          type="submit"
+          class="mat-button mat-primary"
+          [disabled]="form.invalid"
+        >Login</button>
+      </form>
+
+    </mat-card>
+  </div>
+</section>
